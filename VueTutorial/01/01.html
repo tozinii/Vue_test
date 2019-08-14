@@ -1,31 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title>01</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
   <div id="app">
-   <h1>{{title}}</h1>
+    <h1>{{title}}</h1>
 
-   <span>Añadir coche:</span><br />
-   <input name="brand" type="text" v-model="newCarBrand" />
-   <input name="tank" type="checkbox" v-model="newCarFuel" value="true" />full
-   <button @click="addNewCar">Añadir coche</button><br /><br />
-   
-   <span>Eliminar coche:</span><br />
-   <input name="delCarIndex" type="text" v-model="delCarIndex" />
-   <button @click="deleteCar(delCarIndex)">Borrar coche</button><br /><br />
+    <span>Añadir coche:</span><br />
+    <input name="brand" type="text" v-model="newCarBrand" @keyup.enter="addNewCar" />
+    <input name="tank" type="checkbox" v-model="newCarFuel" value="true" />full
+    <button @click="addNewCar">Añadir coche</button><br /><br />
 
-   <ul>
-     <li v-for="car of cars">
-       {{car.brand}}
-       <span style="color: green" v-if="car.fuel">Full tank</span>
-       <span style="color: red" v-if="!car.fuel">Empty tank</span>
-     </li>
-   </ul>
+    <span>Eliminar coche:</span><br />
+    <input name="delCarIndex" type="text" />
+    <button @click="deleteCar(delCarIndex)">Borrar coche</button><br /><br />
+
+    <ol>
+      <li v-for="car of cars">
+        <input type="text" v-model="car.brand" />
+        <span style="color: green" v-if="car.fuel">Full tank</span>
+        <span style="color: red" v-if="!car.fuel">Empty tank</span>
+      </li>
+    </ol>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
