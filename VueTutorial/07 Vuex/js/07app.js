@@ -3,8 +3,11 @@ const store = new Vuex.Store({
     number: 10
   },
   mutations: {
-    increaseNumber(){
-      this.state.number++;
+    increaseNumber(state) {
+      state.number++;
+    },
+    decreaseNumber(state, n) {
+      state.number -= n;
     }
   }
 });
